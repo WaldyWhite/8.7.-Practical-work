@@ -208,7 +208,7 @@ function toOver() {
 
             answerField.textContent = (answerNumber <= 20 && answerNumber >= 0) ? answerList[answerChange-1] : answerField.textContent = answerList[answerChange-1];
             textNumber.textContent = intTostring(String(answerNumber));
-            questionMark.textContent = '?';
+            questionMark.textContent = ' ?';
         }
     }
 };
@@ -235,7 +235,7 @@ function toLess() {
 
             answerField.textContent = (answerNumber <= 20 && answerNumber >= 0) ? answerList[answerChange-1] : answerField.textContent = answerList[answerChange-1];
             textNumber.textContent = intTostring(String(answerNumber));
-            questionMark.textContent = '?';
+            questionMark.textContent = ' ?';
         }
     }
 };

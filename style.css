@@ -86,8 +86,8 @@ p {
 .coll {
     height: 105px;
     margin: 0 50px;
-    background-color: rgba(173, 210, 255, 0.4);
-    border: solid rgb(192, 214, 255, 0.4);
+    background-color: rgba(173, 210, 255, 0.7);
+    border: solid rgb(192, 214, 255, 0.6);
     padding: 0 50px;
     margin-bottom: 20px;
 }
@@ -143,6 +143,7 @@ h3 {
 
 #textNumber {
     color: rgb(167, 26, 155);
+    font-weight: 600;
 }
 .btnStart{
     height: 30px;
