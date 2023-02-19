@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Waldemar Weis(Владимир Вайс)">
+        <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="style.css" type="text/css"/>
+    <title>Угадайка</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="contain">
+            <div class="box-container">
+                <div class="box-card">
+                    <div class="box-header">
+                        <p class="m">Вопрос №<span id="orderNumberField">5</span></p>
+                    </div>
+                    <div class="form">
+                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                             Настройки
+                        </button>
+                        <div class="collapse" id="collapseExample">
+                            <div class="input">
+                                <span class="bcMin textSaved">Минимальное число</span><input type="text" class="numberMin" id="min" value="0" maxlength="6" autocomplete="off"> <span class="newMin textSaved">новое значение <span class="savedMin"></span></span>
+                            </div>
+                            <div class="input">
+                                <span class=" bcMax textSaved">Максимальное число </span><input type="text" class="numberMax" id="max" value="100" maxlength="6" autocomplete="off"><span class="newMax textSaved">новое значение <span class="savedMax"></span></span>
+                            </div>
+                            <button class="btn btnSave">Сохранить</button>
+                        </div>
+                        
+                    </div>
+                    <div class="coll">
+                        <h3 class="title"><span id="answerField">Вы загадали число </span ><span id ="textNumber"></span><span class="questionMark"></span></h3>
+                    </div>
+                    <button type="button" class="btn btnStart">Начать Игру</button>
+                    <div class="box-body">
+                        <div class="box-group">
+                            <button type="button" class="btn numberMin" id= "btnLess">&#129047;<br>меньше</button>
+                            <button type="button" class="btn btn-lge" id="btnEqual">Верно!</button>
+                            <button type="button" class="btn numberMax" id="btnOver">больше<br>&#129045;</button>
+                        </div>
+                        <div class="box-footer">
+                            <button class="btn btn-links" id="btnRetry">Сброс</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- my JSscripts -->
+    <script src="script.js"></script>
+</body>
+</html>
