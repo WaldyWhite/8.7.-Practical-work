@@ -227,7 +227,7 @@ function toLess() {
             gameRun = false;
 
         } else {
-            maxValue = answerNumber  - 1;
+            maxValue = answerNumber  + 1;
             answerNumber  = Math.floor((maxValue + minValue) / 2);
             orderNumber++;
             orderNumberField.textContent = orderNumber;
