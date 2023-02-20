@@ -16,6 +16,17 @@ let gameRun = true;
 let answerChange = 0;
 let stringNumber;
 
+const answerList = ['Да это легко! Вы загадали', 'Наверное, это число', 'Дай-ка подумать, это', 'Думаю это число','Запросто, Ваше число','Вы загадали число'];
+const answerWin = [`Я всегда угадываю\n\u{1F60E}`, `Я красавчик !\n\u{1F609}`, `Правда, я молодец?\n\u{1F604}`]
+
+orderNumberField.textContent = orderNumber;
+
+answerField.textContent = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
+
+document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
+document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
+
+
 // ---- number to text conversion ----
 function intTostring(n){
     let y;
@@ -59,15 +70,6 @@ function intTostring(n){
   return (y.length <= 20)? ` ${minus} ${y}`:` ${n}`;
   }
 
-const answerList = ['Да это легко! Вы загадали', 'Наверное, это число', 'Дай-ка подумать, это', 'Думаю это число','Запросто, Ваше число','Вы загадали число'];
-const answerWin = [`Я всегда угадываю\n\u{1F60E}`, `Я красавчик !\n\u{1F609}`, `Правда, я молодец?\n\u{1F604}`]
-
-orderNumberField.textContent = orderNumber;
-
-answerField.textContent = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
-
-document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
-document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
 
 // ---- returns the default value ----
 function returnValues(){
