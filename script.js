@@ -16,6 +16,7 @@ let gameRun = true;
 let answerChange = 0;
 let stringNumber;
 
+// ---- number to text conversion ----
 function intTostring(n){
     let y;
     let minus;
