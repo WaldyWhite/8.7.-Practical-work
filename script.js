@@ -1,7 +1,9 @@
 let minValue;
 let maxValue;
 
-minValue = parseInt(document.querySelector('.numberMin').value);
+
+
+minValue = (parseInt(document.querySelector('.numberMin').value));
 maxValue = parseInt(document.querySelector('.numberMax').value);
 
 const orderNumberField = document.querySelector('#orderNumberField');
@@ -16,6 +18,7 @@ let gameRun = true;
 let answerChange = 0;
 let stringNumber;
 
+
 const answerList = ['Да это легко! Вы загадали', 'Наверное, это число', 'Дай-ка подумать, это', 'Думаю это число','Запросто, Ваше число','Вы загадали число'];
 const answerWin = [`Я всегда угадываю\n\u{1F60E}`, `Я красавчик !\n\u{1F609}`, `Правда, я молодец?\n\u{1F604}`]
 
@@ -26,6 +29,34 @@ answerField.textContent = `Загадайте любое целое число �
 document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
 document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
 
+
+// ---- check for Min < -999 ----
+document.querySelector('.numberMin').addEventListener('keyup', function (){
+    if(event.keyCode == 8){
+        document.querySelector('.numberMin').maxLength = 5;
+    } else if ((document.querySelector('.numberMin').value <= -999)){
+        document.querySelector('.numberMin').maxLength = 4;
+        document.querySelector('.numberMin').value = -999;
+    }else if ((document.querySelector('.numberMin').value > 999)){
+        document.querySelector('.numberMin').maxLength = 3;
+        document.querySelector('.numberMin').value = 999;
+    }
+});
+
+// ---- check for Max > 999 ----
+document.querySelector('.numberMax').addEventListener('keyup', function(){
+    if(event.keyCode == 8){
+        document.querySelector('.numberMax').maxLength = 4;
+    }else if(document.querySelector('.numberMax').value > 999){ 
+        document.querySelector('.numberMax').maxLength = 3;
+        document.querySelector('.numberMax').value = 999;
+
+    }else if ((document.querySelector('.numberMax').value <= -999)){
+        document.querySelector('.numberMax').maxLength = 4;
+        document.querySelector('.numberMax').value = -999;
+    }
+
+});
 
 // ---- number to text conversion ----
 function intTostring(n){
@@ -69,7 +100,6 @@ function intTostring(n){
   // ---- character count ----
   return (y.length <= 20)? ` ${minus} ${y}`:` ${n}`;
   }
-
 
 // ---- returns the default value ----
 function returnValues(){
@@ -261,4 +291,3 @@ function toRight(){
     }
 
 };
-
