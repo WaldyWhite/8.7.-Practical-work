@@ -145,10 +145,6 @@ document.querySelector('.btnSave').addEventListener('click', function(){
         returnValues();
         answerField.textContent = 'Введите пожалуйста число';
 
-    // checking the sum of variables for 0
-    } else if((minValue + maxValue) === 0){
-        returnValues();
-        answerField.textContent = 'Сумма ваших чисел равна нулю, введите пожалуйста другие числа';
 
     // checking for Min > Max
     } else if(minValue >= maxValue){
@@ -230,8 +226,8 @@ function toLess() {
             gameRun = false;
 
         } else {
-            maxValue = answerNumber  - 1;
-            answerNumber  = Math.floor((maxValue + minValue) / 2);
+            maxValue = answerNumber - 1;
+            answerNumber  = Math.ceil((maxValue + minValue) / 2);
             orderNumber++;
             orderNumberField.textContent = orderNumber;
             answerChange = Math.round(Math.random()*(6-1)+1);
