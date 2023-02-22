@@ -26,7 +26,7 @@ document.querySelector('.savedMin').textContent = document.querySelector('.numbe
 document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
 
 
-// ---- check for Min < -999 ----
+// ---- check for Min < -999 check for NaN ----
 document.querySelector('.numberMin').addEventListener('keyup', function (){
     if(event.keyCode == 8){
         document.querySelector('.numberMin').maxLength = 5;
@@ -43,7 +43,7 @@ document.querySelector('.numberMin').addEventListener('keyup', function (){
     
 });
 
-// ---- check for Max > 999 ----
+// ---- check for Max > 999 check for NaN ----
 document.querySelector('.numberMax').addEventListener('keyup', function(){
     if(event.keyCode == 8){
         document.querySelector('.numberMax').maxLength = 5;
@@ -104,7 +104,7 @@ function intTostring(n){
   }
   // ---- character count ----
   return (y.length <= 20)? ` ${minus} ${y}`:` ${n}`;
-};
+}
 
 // ---- returns the default value ----
 function returnValues(){
@@ -112,20 +112,20 @@ function returnValues(){
     document.querySelector('.numberMax').value = 100;
     document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
     document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
-};
+}
 
 // ---- returns value from settings ----
 function setValues(){
     minValue = parseInt(document.querySelector('.numberMin').value);
     maxValue = parseInt(document.querySelector('.numberMax').value);
-};
+}
 
 // ---- removing EventListenerlisteners from buttons ----
 function removeEventListener(){
     document.querySelector('#btnLess').removeEventListener('click', toLess);
     document.querySelector('#btnOver').removeEventListener('click', toOver);
     document.querySelector('#btnEqual').removeEventListener('click', toRight);
-};
+}
 
 // ---- Button Start ----
 document.querySelector('.btnStart').addEventListener('click', toStart);
@@ -149,7 +149,7 @@ function toStart(){
     // removing EventListenerlistener from Start button
     document.querySelector('.btnStart').removeEventListener('click', toStart);
 
-};
+}
 
 // ---- function toSave for button Save ----
 document.querySelector('.btnSave').addEventListener('click', function(){
@@ -217,7 +217,7 @@ document.querySelector('#btnRetry').addEventListener('click', function () {
 // ---- function toOver for button Over ----
 function toOver() {
     if (gameRun){
-        if (minValue === maxValue || minValue > answerNumber || maxValue < answerNumber ){
+        if (minValue === maxValue){
             const phraseRandom = Math.round( Math.random());
             const answerPhrase = (phraseRandom === 1) ?
                 `Вы загадали неправильное число!\n\u{1F914}` :
@@ -239,14 +239,17 @@ function toOver() {
             answerField.textContent = (answerNumber <= 20 && answerNumber >= 0) ? answerList[answerChange-1] : answerField.textContent = answerList[answerChange-1];
             textNumber.textContent = intTostring(String(answerNumber));
             questionMark.textContent = ' ?';
+            console.log(maxValue)
+            console.log(minValue)
+        
         }
     }
-};
+}
 
 // ---- function toLees for Less Button ----
 function toLess() {
     if (gameRun){
-        if (minValue === maxValue || minValue > answerNumber || maxValue < answerNumber ){
+        if (minValue === maxValue){
             const phraseRandom = Math.round( Math.random());
             const answerPhrase = (phraseRandom === 1) ?
             `Вы загадали неправильное число!\n\u{1F914}`  :
@@ -266,9 +269,11 @@ function toLess() {
             answerField.textContent = (answerNumber <= 20 && answerNumber >= 0) ? answerList[answerChange-1] : answerField.textContent = answerList[answerChange-1];
             textNumber.textContent = intTostring(String(answerNumber));
             questionMark.textContent = ' ?';
+            console.log(maxValue)
+            console.log(minValue)
         }
     }
-};
+}
 
 // ---- function toRight for Butto Right ----
 function toRight(){
@@ -293,4 +298,4 @@ function toRight(){
         orderNumberField.textContent = orderNumber;
     }
 
-};
+}
