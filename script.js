@@ -145,11 +145,11 @@ function toStart(){
 // ---- function toSave for button Save ----
 document.querySelector('.btnSave').addEventListener('click', function(){
 
-    document.querySelector('.numberMin').value = (parseInt(document.querySelector('.numberMin').value) <= -10000)? -999: document.querySelector('.numberMin').value;
-    document.querySelector('.numberMax').value = (parseInt(document.querySelector('.numberMax').value) >= 10000)? 999: document.querySelector('.numberMax').value;
+    document.querySelector('.numberMin').value = (parseInt(document.querySelector('.numberMin').value) <= -10000)? -999: parseInt(document.querySelector('.numberMin').value);
+    document.querySelector('.numberMax').value = (parseInt(document.querySelector('.numberMax').value) >= 10000)? 999: parseInt(document.querySelector('.numberMax').value);
    
-    document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
-    document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
+    document.querySelector('.savedMin').textContent = parseInt(document.querySelector('.numberMin').value);
+    document.querySelector('.savedMax').textContent = parseInt(document.querySelector('.numberMax').value);
 
     setValues();
 
