@@ -36,20 +36,29 @@ document.querySelector('.numberMin').addEventListener('keyup', function (){
     }else if ((document.querySelector('.numberMin').value > 999)){
         document.querySelector('.numberMin').maxLength = 3;
         document.querySelector('.numberMin').value = 999;
+    } else if (isNaN(document.querySelector('.numberMin').value) && document.querySelector('.numberMin').value != '-' ) {
+        returnValues();
+        answerField.textContent = 'Введите пожалуйста число';
     }
+    
 });
 
 // ---- check for Max > 999 ----
 document.querySelector('.numberMax').addEventListener('keyup', function(){
     if(event.keyCode == 8){
         document.querySelector('.numberMax').maxLength = 5;
-    }else if(document.querySelector('.numberMax').value > 999){ 
+
+    } else if(document.querySelector('.numberMax').value > 999) { 
         document.querySelector('.numberMax').maxLength = 3;
         document.querySelector('.numberMax').value = 999;
 
-    }else if ((document.querySelector('.numberMax').value <= -999)){
+    } else if ((document.querySelector('.numberMax').value <= -999)) {
         document.querySelector('.numberMax').maxLength = 4;
         document.querySelector('.numberMax').value = -999;
+
+    } else if (isNaN(document.querySelector('.numberMax').value) && document.querySelector('.numberMax').value != '-' ){
+        returnValues();
+        answerField.textContent = 'Введите пожалуйста число';
     }
 
 });
@@ -148,8 +157,8 @@ document.querySelector('.btnSave').addEventListener('click', function(){
     document.querySelector('.numberMin').value = (parseInt(document.querySelector('.numberMin').value) <= -10000)? -999: document.querySelector('.numberMin').value;
     document.querySelector('.numberMax').value = (parseInt(document.querySelector('.numberMax').value) >= 10000)? 999: document.querySelector('.numberMax').value;
    
-    document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
-    document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
+    document.querySelector('.savedMin').textContent = parseInt(document.querySelector('.numberMin').value);
+    document.querySelector('.savedMax').textContent = parseInt(document.querySelector('.numberMax').value);
 
     setValues();
 
@@ -166,14 +175,8 @@ document.querySelector('.btnSave').addEventListener('click', function(){
     // EventListenerlisteners Start Button
     document.querySelector('.btnStart').addEventListener('click', toStart);
 
-    // checking a variable for NaN
-    if (isNaN(minValue) || isNaN(maxValue) ){
-        returnValues();
-        answerField.textContent = 'Введите пожалуйста число';
-
-
     // checking for Min > Max
-    } else if(minValue >= maxValue){
+   if(minValue >= maxValue){
         returnValues();
         answerField.textContent = 'Минимальное число больше Максимального или же они равны';
     }
