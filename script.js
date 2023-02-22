@@ -1,7 +1,7 @@
 let minValue;
 let maxValue;
 
-minValue = parseInt(document.querySelector('.numberMin').value);
+minValue = (parseInt(document.querySelector('.numberMin').value));
 maxValue = parseInt(document.querySelector('.numberMax').value);
 
 const orderNumberField = document.querySelector('#orderNumberField');
@@ -22,34 +22,25 @@ orderNumberField.textContent = orderNumber;
 
 answerField.textContent = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
 
-document.querySelector('.savedMin').textContent = parseInt(document.querySelector('.numberMin').value);
-document.querySelector('.savedMax').textContent = parseInt(document.querySelector('.numberMax').value);
+document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
+document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
 
 
-// ---- check for Min < -999 & NaN ----
+// ---- check for Min < -999 ----
 document.querySelector('.numberMin').addEventListener('keyup', function (){
-
-if(event.keyCode == 8){
+    if(event.keyCode == 8){
         document.querySelector('.numberMin').maxLength = 5;
-
     } else if ((document.querySelector('.numberMin').value <= -999)){
         document.querySelector('.numberMin').maxLength = 4;
         document.querySelector('.numberMin').value = -999;
-
     }else if ((document.querySelector('.numberMin').value > 999)){
         document.querySelector('.numberMin').maxLength = 3;
         document.querySelector('.numberMin').value = 999;
-
-        // checking for NaN
-    }else if(isNaN(parseInt(document.querySelector('.numberMin').value))){
-        returnValues();
-        answerField.textContent = 'Введите пожалуйста целое число ';
     }
-}); 
+});
 
-// ---- check for Max > 999 & NaN ----
+// ---- check for Max > 999 ----
 document.querySelector('.numberMax').addEventListener('keyup', function(){
-
     if(event.keyCode == 8){
         document.querySelector('.numberMax').maxLength = 5;
     }else if(document.querySelector('.numberMax').value > 999){ 
@@ -59,11 +50,8 @@ document.querySelector('.numberMax').addEventListener('keyup', function(){
     }else if ((document.querySelector('.numberMax').value <= -999)){
         document.querySelector('.numberMax').maxLength = 4;
         document.querySelector('.numberMax').value = -999;
-        // checking for NaN
-    }else if(isNaN(parseInt(document.querySelector('.numberMax').value))){
-        returnValues();
-        answerField.textContent = 'Введите пожалуйста целое число ';
     }
+
 });
 
 // ---- number to text conversion ----
@@ -160,8 +148,8 @@ document.querySelector('.btnSave').addEventListener('click', function(){
     document.querySelector('.numberMin').value = (parseInt(document.querySelector('.numberMin').value) <= -10000)? -999: document.querySelector('.numberMin').value;
     document.querySelector('.numberMax').value = (parseInt(document.querySelector('.numberMax').value) >= 10000)? 999: document.querySelector('.numberMax').value;
    
-    document.querySelector('.savedMin').textContent = parseInt(document.querySelector('.numberMin').value,10);
-    document.querySelector('.savedMax').textContent = parseInt(document.querySelector('.numberMax').value);
+    document.querySelector('.savedMin').textContent = document.querySelector('.numberMin').value;
+    document.querySelector('.savedMax').textContent = document.querySelector('.numberMax').value;
 
     setValues();
 
@@ -178,10 +166,16 @@ document.querySelector('.btnSave').addEventListener('click', function(){
     // EventListenerlisteners Start Button
     document.querySelector('.btnStart').addEventListener('click', toStart);
 
-    // checking for Min > Max
-    if(minValue >= maxValue){
+    // checking a variable for NaN
+    if (isNaN(minValue) || isNaN(maxValue) ){
         returnValues();
-        answerField.textContent = 'Минимальное число больше Максимального';
+        answerField.textContent = 'Введите пожалуйста число';
+
+
+    // checking for Min > Max
+    } else if(minValue >= maxValue){
+        returnValues();
+        answerField.textContent = 'Минимальное число больше Максимального или же они равны';
     }
     else {
         answerField.textContent = `Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю.`;
